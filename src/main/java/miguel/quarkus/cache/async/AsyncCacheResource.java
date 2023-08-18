@@ -1,4 +1,4 @@
-package miguel.quarkus.cache;
+package miguel.quarkus.cache.async;
 
 import javax.ws.rs.GET;
 import javax.ws.rs.Path;

@@ -1,11 +1,11 @@
-package miguel.quarkus.cache;
+package miguel.quarkus.cache.async;
 
-import static miguel.quarkus.cache.manager.CacheManager.CACHE_NAME;
+import static miguel.quarkus.cache.async.manager.CacheManager.CACHE_NAME;
 
 import javax.enterprise.context.ApplicationScoped;
 import lombok.extern.slf4j.Slf4j;
-import miguel.quarkus.cache.interceptor.AsyncCacheKey;
-import miguel.quarkus.cache.interceptor.CacheResultAsync;
+import miguel.quarkus.cache.async.interceptor.AsyncCacheKey;
+import miguel.quarkus.cache.async.interceptor.CacheResultAsync;
 import org.slf4j.helpers.MessageFormatter;
 
 @Slf4j

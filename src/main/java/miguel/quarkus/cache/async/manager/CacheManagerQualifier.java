@@ -1,4 +1,4 @@
-package miguel.quarkus.cache.manager;
+package miguel.quarkus.cache.async.manager;
 
 import static java.lang.annotation.ElementType.FIELD;
 import static java.lang.annotation.ElementType.METHOD;

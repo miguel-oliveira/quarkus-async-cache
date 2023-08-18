@@ -1,4 +1,4 @@
-package miguel.quarkus.cache.manager;
+package miguel.quarkus.cache.async.manager;
 
 import io.quarkus.cache.Cache;
 import io.quarkus.cache.CacheName;

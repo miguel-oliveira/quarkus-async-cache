@@ -1,4 +1,4 @@
-package miguel.quarkus.cache.interceptor;
+package miguel.quarkus.cache.async.interceptor;
 
 import io.quarkus.cache.Cache;
 import io.quarkus.cache.CacheManager;
@@ -9,7 +9,7 @@ import java.util.concurrent.ExecutionException;
 import java.util.function.Supplier;
 import javax.enterprise.context.ApplicationScoped;
 import lombok.extern.slf4j.Slf4j;
-import miguel.quarkus.cache.manager.CacheManagerQualifier;
+import miguel.quarkus.cache.async.manager.CacheManagerQualifier;
 import org.eclipse.microprofile.context.ManagedExecutor;
 
 @Slf4j

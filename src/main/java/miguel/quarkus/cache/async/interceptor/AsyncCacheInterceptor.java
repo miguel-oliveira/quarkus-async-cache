@@ -1,4 +1,4 @@
-package miguel.quarkus.cache.interceptor;
+package miguel.quarkus.cache.async.interceptor;
 
 import java.lang.reflect.Parameter;
 import java.util.concurrent.ExecutionException;

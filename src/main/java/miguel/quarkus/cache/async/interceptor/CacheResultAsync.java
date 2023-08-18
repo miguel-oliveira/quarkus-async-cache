@@ -1,4 +1,4 @@
-package miguel.quarkus.cache.interceptor;
+package miguel.quarkus.cache.async.interceptor;
 
 import static java.lang.annotation.ElementType.METHOD;
 import static java.lang.annotation.ElementType.TYPE;
