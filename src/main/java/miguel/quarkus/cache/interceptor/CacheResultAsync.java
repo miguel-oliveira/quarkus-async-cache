@@ -15,6 +15,4 @@ import javax.interceptor.InterceptorBinding;
 public @interface CacheResultAsync {
 
   @Nonbinding String cacheName();
-
-  @Nonbinding int cacheKeyIndex() default 0;
 }

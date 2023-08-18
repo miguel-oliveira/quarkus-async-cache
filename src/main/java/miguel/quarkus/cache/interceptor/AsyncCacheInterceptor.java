@@ -1,5 +1,7 @@
 package miguel.quarkus.cache.interceptor;
 
+import java.lang.reflect.Parameter;
+import java.util.concurrent.ExecutionException;
 import javax.interceptor.AroundInvoke;
 import javax.interceptor.Interceptor;
 import javax.interceptor.InvocationContext;
@@ -14,14 +16,37 @@ public class AsyncCacheInterceptor {
 
   @AroundInvoke
   public Object cacheResult(final InvocationContext context) throws Exception {
+    final String cacheName = extractCacheName(context);
+    final Object cacheKey = extractCacheKey(context);
+    return proceed(context, cacheName, cacheKey);
+  }
 
+  private String extractCacheName(final InvocationContext context) {
     final CacheResultAsync annotation = context.getMethod().getAnnotation(CacheResultAsync.class);
+    return annotation.cacheName();
+  }
 
-    final String cacheName = annotation.cacheName();
-    final int cacheKeyIndex = annotation.cacheKeyIndex();
-    final Object key = context.getParameters()[cacheKeyIndex];
+  private Object extractCacheKey(final InvocationContext context) {
+    final Parameter[] parameters = context.getMethod().getParameters();
+    for (int i = 0; i < parameters.length; i++) {
+      if (parameters[i].isAnnotationPresent(AsyncCacheKey.class)) {
+        return context.getParameters()[i];
+      }
+    }
+    throw missingCacheKey(context);
+  }
 
-    return asyncCache.get(cacheName, key, () -> proceed(context));
+  private RuntimeException missingCacheKey(final InvocationContext context) {
+    final String message = "A parameter must be marked with @AsyncCacheKey in order to cache the result. Method = %s";
+    return new RuntimeException(message.formatted(context.getMethod()));
+  }
+
+  private Object proceed(
+      final InvocationContext context,
+      final String cacheName,
+      final Object cacheKey
+  ) throws ExecutionException, InterruptedException {
+    return asyncCache.get(cacheName, cacheKey, () -> proceed(context));
   }
 
   private Object proceed(final InvocationContext context) {
