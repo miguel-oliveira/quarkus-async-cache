@@ -11,7 +11,7 @@ import javax.enterprise.context.ApplicationScoped;
 @CacheManagerQualifier
 public class CacheManager implements io.quarkus.cache.CacheManager {
 
-  public static final String CACHE_NAME = "my-cache-name";
+  public static final String CACHE_NAME = "async-cache";
 
   private static final Set<String> CACHE_NAMES;
 
