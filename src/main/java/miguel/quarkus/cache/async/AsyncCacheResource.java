@@ -1,5 +1,6 @@
 package miguel.quarkus.cache.async;
 
+import javax.validation.constraints.NotBlank;
 import javax.ws.rs.GET;
 import javax.ws.rs.Path;
 import javax.ws.rs.Produces;
@@ -17,7 +18,7 @@ public class AsyncCacheResource {
   @GET
   @Produces(MediaType.TEXT_PLAIN)
   public String get(
-      @QueryParam("key") final String key,
+      @QueryParam("key") @NotBlank final String key,
       @QueryParam("delayInMs") final int delayInMs
   ) {
     return computeValueService.computeValue(key, delayInMs);
