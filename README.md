@@ -32,7 +32,6 @@ same key:
 * Perform a request in the first instance for a given key, and add a delay (e.g. 10000)
 * Perform a request for the same key in the second instance
 * The second request will then wait for the first request to complete and return the cached result
-*
-The [service](https://github.com/miguel-oliveira/quarkus-async-cache/blob/master/src/main/java/miguel/quarkus/cache/async/ComputeValueService.java)
+* The [service](https://github.com/miguel-oliveira/quarkus-async-cache/blob/master/src/main/java/miguel/quarkus/cache/async/ComputeValueService.java)
 responsible for the computation will log a message every time it executes
 * After executing the above steps, only one log message should appear
